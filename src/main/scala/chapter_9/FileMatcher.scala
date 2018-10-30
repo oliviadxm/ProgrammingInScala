@@ -17,8 +17,8 @@ object FileMatcher {
 //    for (file <- filesHere; if file.getName.matches(query))
 //      yield file
 
-  def filesMatching(query: String, matcher: (String, String) => Boolean) =
-    for (file <- filesHere; if matcher(file.getName, query))
+  def filesMatching(matcher: String => Boolean) =
+    for (file <- filesHere; if matcher(file.getName))
       yield file
 
   def filesEnding(query: String) =
